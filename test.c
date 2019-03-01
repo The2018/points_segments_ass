@@ -54,6 +54,26 @@ int main() {
 			
 			print_array_2D(segments, s, 2);
 			print_array(points, p);
+
+			int * result1 = points_segments_naive(s, p, segments, points);
+			int * result2 = points_segments_fast(s, p, segments, points);
+			int check = 0;
+
+			for (int i = 0; i < p; i++){
+				if (result1[i] != result2[i]){
+					check = 1;
+				}
+			} 
+			if (check == 0){
+				printf("OK\n");
+			} else{
+				printf("The result of naive algorithm is\n");
+				print_array(result1, p);
+				printf("The result of fast algorithm is\n");
+				print_array(result2, p);
+			}
+			printf("\n");
+			//points_segments_fast(int s, int p, int ** segments, int * points);
 			//TODO: pass s, p, segments, and points to your two algorithms
 			//the output should be an array of size p containing 
 			//-for each point- the number of covering segments 
